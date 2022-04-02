@@ -9,7 +9,7 @@ body{
 
 #calculator-body{
     background-color:rgb(67, 71, 83);
-    height: 490px;; 
+    height: 530px;; 
     width: 375px;
     border-radius:15px;
     display:flex;
@@ -18,12 +18,12 @@ body{
 }
 
 #display{
-    height: 100px;
+    height: 75px;
     width: 270px;
     background-color:rgb(174, 197, 165);
     border: 8px solid rgb(59, 59, 59);
     border-radius:15px;
-    margin-top: 15px;
+    margin-top: 20px;
     padding-right: 10px;
     display:flex;
     flex-direction: column;
@@ -43,23 +43,22 @@ body{
 }
 
 #button-container{
-    display:flex;
-    flex-direction: row-reverse;
+    display: grid;
+    justify-content: center;
+    margin-top: 20px;
+    width: 330px;
+    grid-template-columns: repeat(4, minmax(75px, 1fr));
+    grid-auto-rows: minmax(75px, auto);
+    grid-gap: 15px;
 }
 
-#operation-buttons{
-    display:flex;
-    flex-direction: column-reverse;
-    
-}
 .operation-button{
     width: 75px;
     height: 75px;
     border-radius: 50%;
     font-size:50px;
-    margin:7px;
     background-color: rgb(59, 59, 59);
-    color:rgb(214, 214, 214);
+    color:rgb(255, 255, 255);
     display:flex;
     justify-content: center;
     align-items: center;
@@ -69,20 +68,28 @@ body{
     background-color: rgb(131, 11, 11);
 }
 
-#digit-buttons{
-    display:flex;
-    flex-direction:column-reverse;
-    flex-wrap:wrap;
+.equal-button{
+    background-color: rgb(58, 109, 143);
 }
+
 .digit-button{
+    font-family: 'Oxygen', sans-serif;
     width: 75px;
     height: 75px;
-    margin:7px;
     border-radius: 8px;
     font-size:50px;
     background-color: rgb(141, 141, 141);
-    color:rgb(214, 214, 214);
+    color:rgb(255, 255, 255);
     display:flex;
     justify-content: center;
     align-items: center;
+}
+
+#footer{
+    color:rgb(255, 255, 255);
+}
+
+a { 
+    color: inherit;
+    text-decoration: none;
 }
