@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <title>Calculator</title>
@@ -14,31 +14,32 @@
 <body>
     <div id="calculator-body">
         <div id="display">
-            <p id="calculation">4</p>
-            <p id="input">2 + 2</p>
+            <p id="calculation"></p>
+            <p id="value-input"></p>
         </div>
         <div id="button-container">
-            <button class="seven-button digit-button">7</button>
-            <button class="eight-button digit-button">8</button>
-            <button class="nine-button digit-button">9</button>
-            <button class="divide-button operation-button">÷</button>
+            <button class="seven-button digit-button btn" data-num="7">7</button>
+            <button class="eight-button digit-button btn" data-num="8">8</button>
+            <button class="nine-button digit-button btn" data-num="9">9</button>
+            <button class="divide-button operation-button btn" data-num="/">÷</button>
             
-            <button class="four-button digit-button">4</button>
-            <button class="five-button digit-button">5</button>
-            <button class="six-button digit-button">6</button>
-            <button class="multiply-button operation-button">x</button>
+            <button class="four-button digit-button btn" data-num="4">4</button>
+            <button class="five-button digit-button btn" data-num="5">5</button>
+            <button class="six-button digit-button btn" data-num="6">6</button>
+            <button class="multiply-button operation-button btn" data-num="*">x</button>
 
-            <button class="one-button digit-button">1</button>
-            <button class="two-button digit-button">2</button>
-            <button class="three-button digit-button">3</button>
-            <button class="minus-button operation-button">-</button>
+            <button class="one-button digit-button btn" data-num="1">1</button>
+            <button class="two-button digit-button btn" data-num="2">2</button>
+            <button class="three-button digit-button btn" data-num="3">3</button>
+            <button class="minus-button operation-button btn" data-num="-">-</button>
 
-            <button class="zero-button digit-button">0</button>
-            <button class="clear-button operation-button">C</button>
+            
+            <button class="clear-button operation-button" onClick="window.location.reload();">C</button>
+            <button class="zero-button digit-button btn" data-num="0">0</button>
             <button class="equal-button operation-button">=</button>
-            <button class="plus-button operation-button">+</button>
+            <button class="plus-button operation-button btn" data-num="+">+</button>
             
         </div>
-        <p id="footer">kbousquet<a href="https://github.com/kbousquet/calculator"> <img src="GitHubIcon.png" alt="Git Hub icon" height="20"></a></p>
+        <p id="copyright">kbousquet<a href="https://github.com/kbousquet/calculator"> <img src="GitHubIcon.png" alt="Git Hub icon" height="20"></a></p>
 </body>
 </html>
