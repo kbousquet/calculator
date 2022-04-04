@@ -71,7 +71,15 @@ body{
 }
 
 .clear-button{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    font-size:50px;
     background-color: rgb(131, 11, 11);
+    color:rgb(255, 255, 255);
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .clear-button:hover{
@@ -80,7 +88,15 @@ body{
 }
 
 .equal-button{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    font-size:50px;
     background-color: rgb(58, 109, 143);
+    color:rgb(255, 255, 255);
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .equal-button:hover{

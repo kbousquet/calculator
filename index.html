@@ -14,30 +14,30 @@
 <body>
     <div id="calculator-body">
         <div id="display">
-            <p id="calculation"></p>
-            <p id="value-input"></p>
+            <p id="calculation">0</p>
+            <p id="value-input" style="visibility: hidden;">placeholder</p>
         </div>
         <div id="button-container">
-            <button class="seven-button digit-button btn" data-num="7">7</button>
-            <button class="eight-button digit-button btn" data-num="8">8</button>
-            <button class="nine-button digit-button btn" data-num="9">9</button>
-            <button class="divide-button operation-button btn" data-num="/">÷</button>
+            <button class="digit-button" data-digit="7">7</button>
+            <button class="digit-button" data-digit="8">8</button>
+            <button class="digit-button" data-digit="9">9</button>
+            <button class="operation-button" data-operand="/">÷</button>
             
-            <button class="four-button digit-button btn" data-num="4">4</button>
-            <button class="five-button digit-button btn" data-num="5">5</button>
-            <button class="six-button digit-button btn" data-num="6">6</button>
-            <button class="multiply-button operation-button btn" data-num="*">x</button>
+            <button class="digit-button" data-digit="4">4</button>
+            <button class="digit-button" data-digit="5">5</button>
+            <button class="digit-button" data-digit="6">6</button>
+            <button class="operation-button" data-operand="*">x</button>
 
-            <button class="one-button digit-button btn" data-num="1">1</button>
-            <button class="two-button digit-button btn" data-num="2">2</button>
-            <button class="three-button digit-button btn" data-num="3">3</button>
-            <button class="minus-button operation-button btn" data-num="-">-</button>
+            <button class="digit-button" data-digit="1">1</button>
+            <button class="digit-button" data-digit="2">2</button>
+            <button class="digit-button" data-digit="3">3</button>
+            <button class="operation-button" data-operand="-">-</button>
 
             
-            <button class="clear-button operation-button" onClick="window.location.reload();">C</button>
-            <button class="zero-button digit-button btn" data-num="0">0</button>
-            <button class="equal-button operation-button">=</button>
-            <button class="plus-button operation-button btn" data-num="+">+</button>
+            <button class="clear-button" onClick="window.location.reload();">C</button>
+            <button class="digit-button" data-digit="0">0</button>
+            <button class="equal-button">=</button>
+            <button class="operation-button" data-operand="+">+</button>
             
         </div>
         <p id="copyright">kbousquet<a href="https://github.com/kbousquet/calculator"> <img src="GitHubIcon.png" alt="Git Hub icon" height="20"></a></p>
