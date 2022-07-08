@@ -23,7 +23,7 @@ body{
     height: 75px;
     width: 270px;
     background-color:rgb(174, 197, 165);
-    box-shadow: rgb(0, 0, 0) 2px 5px 10px inset;
+    box-shadow: rgb(0, 0, 0) 2px 3px 10px inset;
     border: 8px solid rgb(59, 59, 59);
     border-radius:15px;
     margin-top: 20px;
