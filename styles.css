@@ -9,6 +9,7 @@ body{
 
 #calculator-body{
     background-color:rgb(67, 71, 83);
+    box-shadow: rgb(0, 0, 0) 5px 5px 5px;
     height: 530px;; 
     width: 375px;
     border-radius:15px;
@@ -22,6 +23,7 @@ body{
     height: 75px;
     width: 270px;
     background-color:rgb(174, 197, 165);
+    box-shadow: rgb(0, 0, 0) 2px 5px 10px inset;
     border: 8px solid rgb(59, 59, 59);
     border-radius:15px;
     margin-top: 20px;
@@ -59,6 +61,7 @@ body{
     border-radius: 50%;
     font-size:50px;
     background-color: rgb(59, 59, 59);
+    box-shadow: rgba(0, 0, 0, 0.705) 0px 5px 5px;
     color:rgb(255, 255, 255);
     display:flex;
     justify-content: center;
@@ -76,6 +79,7 @@ body{
     border-radius: 50%;
     font-size:50px;
     background-color: rgb(131, 11, 11);
+    box-shadow: rgba(0, 0, 0, 0.705) 0px 5px 5px;
     color:rgb(255, 255, 255);
     display:flex;
     justify-content: center;
@@ -93,6 +97,7 @@ body{
     border-radius: 50%;
     font-size:50px;
     background-color: rgb(58, 109, 143);
+    box-shadow: rgba(0, 0, 0, 0.705) 0px 5px 5px;
     color:rgb(255, 255, 255);
     display:flex;
     justify-content: center;
@@ -110,6 +115,7 @@ body{
     border-radius: 8px;
     font-size:50px;
     background-color: rgb(141, 141, 141);
+    box-shadow: rgba(0, 0, 0, 0.705) 0px 5px 5px;
     color:rgb(255, 255, 255);
     display:flex;
     justify-content: center;
