@@ -44,12 +44,12 @@ function operate(num1, operator, num2){
             ans = Math.round(ans*100)/100;
             ansText.innerText = `= ${ans}`;
             break;
-        case 'x':
+        case '*':
             ans = num1 * num2;
             ans = Math.round(ans*100)/100;
             ansText.innerText = `= ${ans}`;
             break;
-        case '÷':
+        case '/':
             ans = num1 / num2;
             ans = Math.round(ans*100)/100;
             ansText.innerText = `= ${ans}`;
@@ -83,70 +83,105 @@ function calcContinue(){
     operatorInput = '';
 };
 
-function runCalculator(){
-    // Digit button triggers
-    digitButtons.forEach(button => button.addEventListener('click',()=>{
-        // First run - Parse buttons to num1 before the operand has been clicked
-        if (firstPass){
-            num1.push(button.innerText);
-            num1Display = +num1.join("");
-            valueInput.textContent = num1Display;
-            valueInput.style.visibility = 'visible';
-        } 
-        // Parse buttons to num2 after the operand has been clicked
-        else if (!firstPass) {
-            num2.push(button.innerText);
-            num2Display = +num2.join("");
-            valueInput.textContent = num2Display;
-        }
-    }));
+function digits(value){
+    // First run - Parse buttons to num1 before the operand has been clicked
+    if (firstPass){
+        num1.push(value);
+        num1Display = +num1.join("");
+        valueInput.textContent = num1Display;
+        valueInput.style.visibility = 'visible';
+    } 
+    // Parse buttons to num2 after the operand has been clicked
+    else if (!firstPass) {
+        num2.push(value);
+        num2Display = +num2.join("");
+        valueInput.textContent = num2Display;
+    }
+};
 
-    // Operand buttons
-    operandButtons.forEach(button => button.addEventListener('click',()=>{
-        // Throw error if user clicks an operand before inputting num1
-        if (firstPass && num1.length === 0){
-            valueInput.style.visibility = 'visible';
-            valueInput.textContent = 'ERROR';
-        }
-        // Operator on first run
-        else if (firstPass){
-            valueInput.textContent = button.innerText;
-            operatorInput = button.innerText;
-            num1Input = parseInt(num1Display);
-            firstPass = false;
-            
-        }
+function operators(operator){
+    // Throw error if user selects an operand before inputting num1
+    if (firstPass && num1.length === 0){
+        valueInput.style.visibility = 'visible';
+        valueInput.textContent = 'ERROR';
+    }
+    // Operator on first run
+    else if (firstPass){
+        valueInput.textContent = operator;
+        operatorInput = operator;
+        num1Input = parseInt(num1Display);
+        firstPass = false;   
+    }
 
-        // String multiple operations
-        else if (!firstPass && num2.length>0){
+    // String multiple operations
+    else if (!firstPass && num2.length>0){
 
-            if (operatorInput === '÷' && num2Input === 0){
-                fullReset();
-                valueInput.textContent = 'ERROR';
-                valueInput.style.visibility = 'visible';
-            }
-
-            else{
-                valueInput.textContent = button.innerText;
-                calculate();
-                operatorInput = button.innerText;   
-            }
-        }
-    }));
-
-
-    // Equal button
-    equalButton.addEventListener('click', () => {
-        // Throw error if user tries to divide by 0
-        if (operatorInput === '÷' && num2Display === 0){
+        if (operatorInput === '÷' && num2Input === 0){
             fullReset();
             valueInput.textContent = 'ERROR';
             valueInput.style.visibility = 'visible';
         }
 
-        else {
+        else{
+            valueInput.textContent = operator;
             calculate();
+            operatorInput = operator;   
         }
+    }
+};
+
+function equals(){
+    // Throw error if user tries to divide by 0
+    if (operatorInput === '÷' && num2Display === 0){
+        fullReset();
+        valueInput.textContent = 'ERROR';
+        valueInput.style.visibility = 'visible';
+    }
+
+    else {
+        calculate();
+    };
+}
+
+function runCalculator(){
+    // Digit buttons
+    digitButtons.forEach(button => button.addEventListener('click',()=>{
+        let value = button.innerText;
+        digits(value);
+    }));
+
+    // Keypresses
+    document.addEventListener('keydown', function(e){
+        let validDigits = ['1','2','3','4','5','6','7','8','9'];
+        let validOperators = ['+','-','*','/'];
+        let value = e.key;
+        // digits
+        if (validDigits.indexOf(value) !== -1){
+            digits(value);
+        }
+        // operators
+        else if (validOperators.indexOf(value) !== -1){
+            operators(value);
+        }
+        // equal sign
+        else if (value === 'Enter'){
+            equals();
+        }
+        // clear
+        else if (value === 'Escape'){
+            fullReset();
+        }
+    });
+
+    // Operand buttons
+    operandButtons.forEach(button => button.addEventListener('click',()=>{
+        let value = button.innerText;
+        operators(value);
+    }));
+
+    // Equal button
+    equalButton.addEventListener('click', () => {
+        equals();
     });
 
     // Clear button
