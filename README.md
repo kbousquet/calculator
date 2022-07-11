@@ -1,6 +1,6 @@
 ## Calculator
 
-![Screenshot of a Calculator on a Webpage](img.jpg)
+![Screenshot of a Calculator on a Webpage](img.JPG)
 
 Implementation of a basic calculator from The Odin Project [curriculum](https://www.theodinproject.com/lessons/foundations-calculator).
 
