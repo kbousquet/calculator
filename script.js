@@ -24,12 +24,14 @@ let ans;
 
 // Trigger handlers
 let firstPass = true;
+let stopChain = false;
 
 // Setup functions
 function calculate(){
     num2Input = parseInt(num2Display);
     operate(num1Input, operatorInput, num2Input);
     calcContinue();
+    
 };
 
 function operate(num1, operator, num2){
@@ -68,6 +70,7 @@ function fullReset(){
     valueInput.style.visibility = 'hidden';
     ansText.innerText = '0';
     firstPass = true;
+    stopChain = false;
 };
 
 function calcContinue(){
@@ -84,19 +87,25 @@ function calcContinue(){
 };
 
 function digits(value){
+    // Parse buttons to num2 after the operand has been clicked
+    if (!firstPass){
+        num2.push(value);
+        num2Display = +num2.join("");
+        valueInput.textContent = num2Display;
+    }
+    
     // First run - Parse buttons to num1 before the operand has been clicked
-    if (firstPass){
+    else if (firstPass){
         num1.push(value);
         num1Display = +num1.join("");
         valueInput.textContent = num1Display;
         valueInput.style.visibility = 'visible';
     } 
-    // Parse buttons to num2 after the operand has been clicked
-    else if (!firstPass) {
-        num2.push(value);
-        num2Display = +num2.join("");
-        valueInput.textContent = num2Display;
-    }
+    // Selecting a digit after equal
+    if (!firstPass && stopChain) {
+        fullReset();
+        digits(value);
+    } 
 };
 
 function operators(operator){
@@ -113,7 +122,7 @@ function operators(operator){
         firstPass = false;   
     }
 
-    // String multiple operations
+    // Stringing multiple operations
     else if (!firstPass && num2.length>0){
 
         if (operatorInput === '÷' && num2Input === 0){
@@ -128,6 +137,12 @@ function operators(operator){
             operatorInput = operator;   
         }
     }
+    // Clicking operator after equal sign
+    else if (stopChain && num2.length ===0){
+        valueInput.textContent = operator;
+        operatorInput = operator;
+        stopChain = false;    
+    }
 };
 
 function equals(){
@@ -140,6 +155,7 @@ function equals(){
 
     else {
         calculate();
+        stopChain = true;
     };
 }
 
