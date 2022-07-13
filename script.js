@@ -98,7 +98,6 @@ function digits(value){
             numDisplay = +num1.join("");
             valueInput.textContent = numDisplay;
             valueInput.style.visibility = 'visible';
-            console.log(numDisplay)
         } 
         // Selecting a digit after equal
         if (!firstPass && stopChain) {
@@ -164,7 +163,6 @@ function runCalculator(){
     // Digit buttons
     digitButtons.forEach(button => button.addEventListener('click',()=>{
         let value = button.innerText;
-        console.log(typeof numDisplay)
         digits(value);
     }));
 
