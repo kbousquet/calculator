@@ -10,11 +10,10 @@ const ansText = document.getElementById('calculation');
 
 // Store num1, num2, and operator inputs
 let num1 = [];
-let num1Display = '';
+let numDisplay = '';
 let num1Input;  // store num1 as an integer for the operate function
 
 let num2 = [];
-let num2Display = '';
 let num2Input;  // store num2 as an integer for the operate function
 
 let operatorInput;
@@ -28,7 +27,7 @@ let stopChain = false;
 
 // Setup functions
 function calculate(){
-    num2Input = parseInt(num2Display);
+    num2Input = parseInt(numDisplay);
     operate(num1Input, operatorInput, num2Input);
     calcContinue();
     
@@ -61,10 +60,9 @@ function operate(num1, operator, num2){
 
 function fullReset(){
     num1 = [];
-    num1Display = '';
+    numDisplay = '';
     num1Input = undefined;
     num2 = [];
-    num2Display = '';
     num2Input = undefined;
     operatorInput = undefined;
     valueInput.style.visibility = 'hidden';
@@ -75,12 +73,11 @@ function fullReset(){
 
 function calcContinue(){
     num1 = [];
-    num1Display = '';
+    numDisplay = '';
     num1Input = ans;  
     ans = 0;
 
     num2 = [];
-    num2Display = '';
     num2Input = 0;
 
     operatorInput = '';
@@ -88,24 +85,27 @@ function calcContinue(){
 
 function digits(value){
     // Parse buttons to num2 after the operand has been clicked
-    if (!firstPass){
-        num2.push(value);
-        num2Display = +num2.join("");
-        valueInput.textContent = num2Display;
+    if(numDisplay.toString().length <= 7){
+        if (!firstPass){
+            num2.push(value);
+            numDisplay = +num2.join("");
+            valueInput.textContent = numDisplay;
+        }
+        
+        // First run - Parse buttons to num1 before the operand has been clicked
+        else if (firstPass){
+            num1.push(value);
+            numDisplay = +num1.join("");
+            valueInput.textContent = numDisplay;
+            valueInput.style.visibility = 'visible';
+            console.log(numDisplay)
+        } 
+        // Selecting a digit after equal
+        if (!firstPass && stopChain) {
+            fullReset();
+            digits(value);
+        }
     }
-    
-    // First run - Parse buttons to num1 before the operand has been clicked
-    else if (firstPass){
-        num1.push(value);
-        num1Display = +num1.join("");
-        valueInput.textContent = num1Display;
-        valueInput.style.visibility = 'visible';
-    } 
-    // Selecting a digit after equal
-    if (!firstPass && stopChain) {
-        fullReset();
-        digits(value);
-    } 
 };
 
 function operators(operator){
@@ -118,7 +118,8 @@ function operators(operator){
     else if (firstPass){
         valueInput.textContent = operator;
         operatorInput = operator;
-        num1Input = parseInt(num1Display);
+        num1Input = parseInt(numDisplay);
+        numDisplay = '';
         firstPass = false;   
     }
 
@@ -147,7 +148,7 @@ function operators(operator){
 
 function equals(){
     // Throw error if user tries to divide by 0
-    if (operatorInput === '÷' && num2Display === 0){
+    if (operatorInput === '÷' && numDisplay === 0){
         fullReset();
         valueInput.textContent = 'ERROR';
         valueInput.style.visibility = 'visible';
@@ -163,12 +164,13 @@ function runCalculator(){
     // Digit buttons
     digitButtons.forEach(button => button.addEventListener('click',()=>{
         let value = button.innerText;
+        console.log(typeof numDisplay)
         digits(value);
     }));
 
     // Keypresses
     document.addEventListener('keydown', function(e){
-        let validDigits = ['1','2','3','4','5','6','7','8','9'];
+        let validDigits = ['0','1','2','3','4','5','6','7','8','9'];
         let validOperators = ['+','-','*','/'];
         let value = e.key;
         // digits
