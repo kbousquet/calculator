@@ -4,7 +4,16 @@
 
 Implementation of a basic calculator from The Odin Project [curriculum](https://www.theodinproject.com/lessons/foundations-calculator).
 
-This is my third **JS** project. Click [here](https://kbousquet.github.io/calculator) for the **Live version** of the game.
+With this calculator, you're able to chain multiple operations together. Each result is stored as an input for the next operation.
+
 
 Trying to get the calculator logic for this project was particularly challenging but rewarding once I began to understand it.
-I also gained more understanding of CSS grid.
+
+
+In this project:
+* Gained more understanding of CSS grid
+* Added keyboard support by Learning how to link up keyboard event listeners
+* Refactored code to prevent redundancy and increase readability  
+
+
+Click [here](https://kbousquet.github.io/calculator) for the **Live version** of the calculator.
